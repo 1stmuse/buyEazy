@@ -1,21 +1,31 @@
 import { StatusBar } from 'expo-status-bar';
+import 'react-native-gesture-handler';
+
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
 
-export default function App() {
+import Screen from './app/components/Screen';
+import RootStack from './app/rootStacks/index';
+
+const Main = () => {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <RootStack />
+    </NavigationContainer>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const App = () => {
+  return (
+    <>
+      <StatusBar
+        barStyle="light-content"
+        translucent
+        backgroundColor="tomato"
+      />
+        <Main />
+    </>
+  );
+};
+
+export default App;
