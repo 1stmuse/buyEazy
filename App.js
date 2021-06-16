@@ -1,17 +1,22 @@
 import { StatusBar } from 'expo-status-bar';
 import 'react-native-gesture-handler';
 
+
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 
 import Screen from './app/components/Screen';
+import Onboarding from "./app/onBoarding"
 import RootStack from './app/rootStacks/index';
 
 const Main = () => {
   return (
-    <NavigationContainer>
-      <RootStack />
-    </NavigationContainer>
+    <Screen>
+      <NavigationContainer>
+        {/* <RootStack /> */}
+        <Onboarding/>
+      </NavigationContainer>
+    </Screen>
   );
 };
 
