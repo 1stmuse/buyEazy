@@ -1,20 +1,11 @@
 import React from "react";
-import { View, Text, TouchableOpacity, useWindowDimensions, StyleSheet, Image, } from "react-native";
+import { View, Text, useWindowDimensions, StyleSheet, Image, } from "react-native";
 
 const Slide = ({data}) => {
     const {width, height} = useWindowDimensions()
-    // React.useEffect(()=>{
-    //     console.log(`${width}
-    //     ${height}`)
-    // },[])
     return (
         <View style={[styles.slide_container, {width}]} > 
-            <View style={styles.skipView}>
-                <TouchableOpacity>
-                    <Text>SKIP</Text>
-                </TouchableOpacity>
-            </View>
-            <View style={{height: height * 0.6, justifyContent:'center', flex:0.7}}>
+            <View style={{ justifyContent:'center', flex:1,}}>
                 <View style={[styles.image_view, ]} >
                     <Image
                         source={data.image}

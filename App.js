@@ -6,15 +6,16 @@ import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 
 import Screen from './app/components/Screen';
-import Onboarding from "./app/onBoarding"
-import RootStack from './app/rootStacks/index';
+import Colors from './app/Colors';
+import Auth from './app/Auth';
 
 const Main = () => {
   return (
     <Screen>
       <NavigationContainer>
         {/* <RootStack /> */}
-        <Onboarding/>
+        <Auth/>
+        {/* <Onboarding/> */}
       </NavigationContainer>
     </Screen>
   );
@@ -26,7 +27,7 @@ const App = () => {
       <StatusBar
         barStyle="light-content"
         translucent
-        backgroundColor="tomato"
+        backgroundColor={Colors.white}
       />
         <Main />
     </>

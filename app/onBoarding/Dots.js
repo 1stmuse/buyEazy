@@ -1,5 +1,6 @@
-import React from 'react'
-import { View, StyleSheet, Animated , useWindowDimensions} from 'react-native'
+import React from 'react';
+import { View, StyleSheet, Animated , useWindowDimensions} from 'react-native';
+import Colors from "../Colors"
 
 const Dots =({slides, scrollX}) =>{
     const {width} = useWindowDimensions()
@@ -14,7 +15,7 @@ const Dots =({slides, scrollX}) =>{
           })
           const color = scrollX.interpolate({
               inputRange,
-              outputRange: ["grey", "#F15A29", "grey"],
+              outputRange: ["grey", Colors.primary, "grey"],
               extrapolate: "clamp"
           })
           return(

@@ -1,8 +1,10 @@
 import React, {useRef, useState} from "react"
-import { Text,  View, useWindowDimensions, Animated , StyleSheet, FlatList} from "react-native";
+import { Text,  View, useWindowDimensions, Animated , StyleSheet, FlatList, TouchableOpacity} from "react-native";
 import Slide from "./BoardSlide"
 import {Slides} from "./data"
 import Dots from "./Dots";
+import NextButton from "./NextButton";
+import AuthButtons from "./AuthButtons";
 
 
 
@@ -17,6 +19,12 @@ const onBoard = () => {
     //     setCurrentIndex(viewableItems[0].index)
     // }).current
 
+    const scrollTo = () => {
+        if(currentIndex < Slides.length - 1){
+            slideRef.current.scrollToIndex({index: currentIndex + 1})
+        }
+    }
+
     const onViewableItemsChanged = React.useRef(({ viewableItems }) => {
         const newIndex = viewableItems[0].index;
         setCurrentIndex(newIndex);
@@ -27,7 +35,15 @@ const onBoard = () => {
 
     return (
         <View style={[styles.boarding_container, {width}]}>
-            <View style={{flex:3}}>
+            {currentIndex < Slides.length - 1 ?
+                <View style={styles.skipView}>
+                    <TouchableOpacity>
+                        <Text>SKIP</Text>
+                    </TouchableOpacity>
+                </View>
+                : null
+            }
+            <View style={{flex:1}}>
                 <FlatList
                 // style={{flex:1}}
                     pagingEnabled
@@ -47,9 +63,14 @@ const onBoard = () => {
                     ref={slideRef}
                 />
             </View>
-            {/* <View style={{flex:0.3, borderWidth:1}}> */}
+            <View style={{flex:0.4,}}>
                 <Dots slides={Slides} scrollX={scrollX}/>
-            {/* </View> */}
+                {currentIndex === Slides.length -1 ? (
+                    <AuthButtons/>
+                ) : (
+                    <NextButton next={scrollTo}/>
+                ) }
+            </View>
         </View>
     )
 }
@@ -58,7 +79,15 @@ const styles = StyleSheet.create({
     boarding_container:{
         flex:1,
         // alignItems:'center'
-    }
+        position:"relative"
+    },
+    skipView:{
+        top: 20,
+        width:"100%",
+        alignItems: "flex-end",
+        paddingHorizontal:15,
+        position:"absolute"
+    },
 })
 
 export default onBoard
