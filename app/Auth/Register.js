@@ -13,22 +13,45 @@ import AppInput from "../components/AppInput";
 import Google from "../../assets/google.svg";
 import Facebook from "../../assets/facebook.svg";
 
-const Login = ({navigation}) => {
+const Register = ({navigation}) => {
   const { width, height } = useWindowDimensions();
   return (
     <View style={[styles.container]}>
-      <View style={[styles.logo, { marginTop: height * 0.1 }]}>
+      <View style={[styles.logo, { marginTop: height * 0.04 }]}>
         <Logo />
       </View>
       <View style={{ alignItems: "center", marginVertical: 10 }}>
-        <Text style={styles.sign_in}>Sign in to your account</Text>
+        <Text style={styles.sign_in}>Create an account</Text>
       </View>
       <View style={[styles.body, { paddingHorizontal: width * 0.05, width }]}>
         <AppInput
-          label="Email Address"
+          label="Full Name"
           width="100%"
+          autoCapitalize="none"
+          inputStyle={{
+            height: 50,
+          }}
+          labelStyle={{
+            marginBottom: 8,
+          }}
+        />
+        <AppInput
+          label="Email Address"
           keyboardType="email-address"
           autoCapitalize="none"
+          width="100%"
+          inputStyle={{
+            height: 50,
+          }}
+          labelStyle={{
+            marginBottom: 8,
+          }}
+        />
+        <AppInput
+          label="Phone Number"
+          keyboardType="phone-pad"
+          autoCapitalize="none"
+          width="100%"
           inputStyle={{
             height: 50,
           }}
@@ -47,29 +70,18 @@ const Login = ({navigation}) => {
             marginBottom: 8,
           }}
         />
-        <TouchableOpacity style={{ alignSelf: "flex-end" }}>
-          <Text style={{ color: Colors.primary, fontSize: 16 }}>
-            Forgot Password ?
-          </Text>
-        </TouchableOpacity>
         <AppButton
-          text="SIGN IN"
+          text="SIGN UP"
           style={{
             backgroundColor: Colors.primary,
             width: "100%",
             height:50,
             borderRadius: 6,
-            marginTop: 20
           }}
           textStyle={{
               color: Colors.white
           }}
         />
-        <View style={styles.orCont}>
-          <View style={styles.line}/>
-          <Text style={{fontSize:20, marginHorizontal:15}}>OR</Text>
-          <View style={styles.line}/>
-        </View>
         <AppButton
           text="SIGN IN WITH GOOGLE"
           style={{
@@ -103,14 +115,9 @@ const Login = ({navigation}) => {
           Icon={() =><Facebook/>}
         />
         <View style={styles.create} >
-          <Text>Don't have an account? </Text>
-          <TouchableOpacity onPress={() => navigation.navigate("register")} >
-            <Text style={{marginLeft:3, color:Colors.primary, fontWeight:"bold"}}>Create a new account</Text>
-          </TouchableOpacity>
-        </View>
-        <View style={{marginTop:20}}>
-          <TouchableOpacity>
-            <Text style={{color:Colors.primary, fontWeight:"bold", fontSize:17}}>Skip sign in</Text>
+          <Text>Already have an account? </Text>
+          <TouchableOpacity onPress={() => navigation.navigate("login")}>
+            <Text style={{marginLeft:3, color:Colors.primary, fontWeight:"bold"}}>Sign in</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -152,4 +159,4 @@ const styles = StyleSheet.create({
     marginTop:20
   },
 });
-export default Login;
+export default Register;

@@ -2,7 +2,7 @@ import React from 'react'
 import { View, StyleSheet, Text, TextInput } from 'react-native';
 import Colors from '../Colors';
 
-const AppInput =({inputStyle, label, labelStyle, width, props}) =>{
+const AppInput =({inputStyle, label, labelStyle, width, ...props}) =>{
 
   return (
     <View style={[styles.container, {width}]} >
