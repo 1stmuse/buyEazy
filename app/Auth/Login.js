@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useCallback} from "react";
 import {
   View,
   StyleSheet,
@@ -12,9 +12,22 @@ import AppButton from "../components/AppButton";
 import AppInput from "../components/AppInput";
 import Google from "../../assets/google.svg";
 import Facebook from "../../assets/facebook.svg";
+import { login } from "../api/auth"
 
 const Login = ({navigation}) => {
   const { width, height } = useWindowDimensions();
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+
+  const submit = useCallback(async () =>{
+
+    const response = await login({email, password})
+    if(response.ok) {
+      console.log(response.data.token)
+    }
+    console.log(response.data.message) 
+  }, [email, password])
+
   return (
     <View style={[styles.container]}>
       <View style={[styles.logo, { marginTop: height * 0.1 }]}>
@@ -27,6 +40,8 @@ const Login = ({navigation}) => {
         <AppInput
           label="Email Address"
           width="100%"
+          value={email}
+          onChange={(text) => setEmail(text)}
           keyboardType="email-address"
           autoCapitalize="none"
           inputStyle={{
@@ -38,6 +53,7 @@ const Login = ({navigation}) => {
         />
         <AppInput
           label="Password"
+          onChange={(text) => setPassword(text)}
           secureTextEntry
           width="100%"
           inputStyle={{
@@ -54,6 +70,7 @@ const Login = ({navigation}) => {
         </TouchableOpacity>
         <AppButton
           text="SIGN IN"
+          onClick={submit}
           style={{
             backgroundColor: Colors.primary,
             width: "100%",
