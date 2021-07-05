@@ -1,10 +1,12 @@
 import React, {useState, useCallback} from "react";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import {
   View,
   StyleSheet,
   Text,
   useWindowDimensions,
   TouchableOpacity,
+  Alert
 } from "react-native";
 import Logo from "../../assets/logo.svg";
 import Colors from "../Colors";
@@ -23,8 +25,11 @@ const Login = ({navigation}) => {
 
     const response = await login({email, password})
     if(response.ok) {
-      console.log(response.data.token)
+      // console.log(response.data.token)
+      await AsyncStorage.setItem('token', response.data.token)
+      return
     }
+    Alert.alert("Error", response.data.message,)
     console.log(response.data.message) 
   }, [email, password])
 
@@ -63,7 +68,7 @@ const Login = ({navigation}) => {
             marginBottom: 8,
           }}
         />
-        <TouchableOpacity style={{ alignSelf: "flex-end" }}>
+        <TouchableOpacity onPress={() => navigation.navigate("forgot_password")} style={{ alignSelf: "flex-end" }}>
           <Text style={{ color: Colors.primary, fontSize: 16 }}>
             Forgot Password ?
           </Text>
