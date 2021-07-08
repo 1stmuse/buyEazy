@@ -7142,6 +7142,11 @@ react-native-otp-field@^0.0.11:
   resolved "https://registry.yarnpkg.com/react-native-otp-field/-/react-native-otp-field-0.0.11.tgz#4d9108f3b73f5de48257ea224445199c3c874874"
   integrity sha512-Glcf5TRWuxDwiC3XyO6oxaYM3yI8b4e1Q5Cwmgo/VN7OiXd9Z1o9N0QM3+kdHFRguqwyODhRBTOs6laXjpAmQQ==
 
+react-native-otp-form@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/react-native-otp-form/-/react-native-otp-form-1.0.2.tgz#cd49060aa2402132cb8bc9dd4222f0048ad7461f"
+  integrity sha512-agIVqfvEGbc+jU1gQ3pHgk+4uJqB5Qc51eYiYY+gal8+dBl+0ZF/fDOSIhnQ47nOQkHflrf1O7guVkdthvlk3g==
+
 react-native-paper@^4.9.1:
   version "4.9.1"
   resolved "https://registry.yarnpkg.com/react-native-paper/-/react-native-paper-4.9.1.tgz#9b2aadcb1bd48ff6825641df60821e20e0cc8276"

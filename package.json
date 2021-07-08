@@ -29,6 +29,7 @@
     "react-native-gesture-handler": "~1.10.2",
     "react-native-otp-box": "^1.0.24",
     "react-native-otp-field": "^0.0.11",
+    "react-native-otp-form": "^1.0.2",
     "react-native-paper": "^4.9.1",
     "react-native-phone-input": "^1.0.10",
     "react-native-phone-number-input": "^2.1.0",

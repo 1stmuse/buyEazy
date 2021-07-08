@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, StyleSheet, Text } from 'react-native';
-import { createStackNavigator } from "@react-navigation/stack"
+import { createStackNavigator, TransitionPresets } from "@react-navigation/stack"
 import Login from './Login';
 import Register from './Register';
 import ForgotPassword from './ForgotPassword';
@@ -13,7 +13,10 @@ const Auth =() =>{
 
   return (
     <Stack.Navigator
-        headerMode="none"
+        screenOptions={{
+          headerShown: false,
+          ...TransitionPresets.SlideFromRightIOS,
+        }}
     >
         <Stack.Screen component={Login} name="login" />
         <Stack.Screen component={Register} name="register"/>

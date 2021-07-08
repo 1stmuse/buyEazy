@@ -61,7 +61,7 @@ const ForgotPassword = ({navigation}) => {
         <AppButton
           text="GET RESET OTP"
         //   onClick={submit}
-        onClick={() => navigation.navigate("reset_password")}
+        onClick={() => navigation.navigate("verify_otp")}
           style={{
             backgroundColor: Colors.primary,
             width: "100%",
