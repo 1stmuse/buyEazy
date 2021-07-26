@@ -26,7 +26,10 @@ const Register = ({navigation}) => {
       <View style={[styles.body, { paddingHorizontal: width * 0.05, width }]}>
         <AppInput
           label="Full Name"
-          width="100%"
+          containerStyle={{
+            width: "100%",
+            marginBottom:20
+          }}
           autoCapitalize="none"
           inputStyle={{
             height: 50,
@@ -39,7 +42,10 @@ const Register = ({navigation}) => {
           label="Email Address"
           keyboardType="email-address"
           autoCapitalize="none"
-          width="100%"
+          containerStyle={{
+            width: "100%",
+            marginBottom:20
+          }}
           inputStyle={{
             height: 50,
           }}
@@ -51,7 +57,10 @@ const Register = ({navigation}) => {
           label="Phone Number"
           keyboardType="phone-pad"
           autoCapitalize="none"
-          width="100%"
+          containerStyle={{
+            width: "100%",
+            marginBottom:20
+          }}
           inputStyle={{
             height: 50,
           }}
@@ -62,7 +71,10 @@ const Register = ({navigation}) => {
         <AppInput
           label="Password"
           secureTextEntry
-          width="100%"
+          containerStyle={{
+            width: "100%",
+            marginBottom:20
+          }}
           inputStyle={{
             height: 50,
           }}

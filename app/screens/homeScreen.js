@@ -1,64 +1,81 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable no-unused-vars */
 import React, {useState} from 'react';
-import {View, StyleSheet, Text, FlatList} from 'react-native';
+import {View, StyleSheet, Text, FlatList, TouchableOpacity} from 'react-native';
+import AppInput from '../components/AppInput';
 
-import {menus} from '../data';
 import Screen from '../components/Screen';
-import RandomFoodCard from '../components/RandomFoodCard';
-import AppPicker from '../components/AppPicker';
+import Colors from "../Colors";
+import Category from '../components/Category';
 
-const categories = [
-  {
-    id: '1',
-    icon: 'keg',
-    label: 'dessert',
-    bg: 'red',
-  },
-  {
-    id: '2',
-    icon: 'chili-hot',
-    label: 'breakfast',
-    bg: 'green',
-  },
-  {
-    id: '3',
-    icon: 'mushroom-outline',
-    label: 'lunch',
-    bg: 'blue',
-  },
-  {
-    id: '4',
-    icon: 'soy-sauce',
-    label: 'dinner',
-    bg: 'tomato',
-  },
-];
+import Cart from "../../assets/shopping_cart.svg";
+import Search from "../../assets/Search.svg";
+import Phones from "../../assets/images/phones.svg";
+import Laptop from "../../assets/images/laptop.svg";
+import Watch from "../../assets/images/wristwatch.svg";
+import Heels from "../../assets/images/heels.svg";
 
 const HomeScreen = () => {
-  const [category, setCategory] = useState('');
-  const selectCatgeory = (cat) => {
-    setCategory(cat);
-  };
+
   return (
     <Screen style={{paddingTop: 20}}>
-      <View>
-        <AppPicker
-          selectedItem={category}
-          placeholder="Category"
-          icon="apps"
-          menus={categories}
-          selectCat={selectCatgeory}
-        />
-      </View>
       <View style={styles.main}>
-        <FlatList
-          data={menus}
-          renderItem={({item}) => <RandomFoodCard food={item} />}
-          keyExtractor={({name}) => name}
-          bounces={true}
-          showsVerticalScrollIndicator={false}
-        />
+        <View style={styles.search}>
+          <AppInput
+            LeftIcon = {() => <Search/>}
+            placeholder = "Search for Products"
+            inputStyle={{
+              height: "100%",
+            }}
+            containerStyle={{
+              height: "100%",
+              width: "85%"
+            }}
+          />
+          <View style={{width: "10%", marginLeft:"5%"}}>
+            <Cart />
+          </View>
+        </View>
+        <View style={{flexDirection:"row", justifyContent:"space-between", alignItems:"center"}}>
+          <Text style={{fontSize:20}} >Top Categories</Text>
+          <TouchableOpacity>
+            <Text style={{color:Colors.primary, fontWeight:"bold"}}>VIEW MORE</Text>
+          </TouchableOpacity>
+        </View>
+        <View style={styles.cat}>
+            <Category text="Laptop" Img={Laptop} 
+              height="70"
+              width="200"
+              style={{
+                width: "23%",
+                height: 100
+              }}
+            />
+            <Category text="Phones" Img={Phones}
+              height="70"
+              width="200"
+              style={{
+                width: "23%",
+                height: 100
+              }}
+            />
+            <Category text="Watch" Img={Watch} 
+              height="70"
+              width="200"
+              style={{
+                width: "23%",
+                height: 100
+              }}
+            />
+            <Category text="Heels" Img={Heels} 
+              height="70"
+              width="200"
+              style={{
+                width: "23%",
+                height: 100,
+              }}
+            />
+        </View>
       </View>
     </Screen>
   );
@@ -71,5 +88,18 @@ const styles = StyleSheet.create({
     marginTop: 20,
     backgroundColor: 'white',
   },
+  search: {
+    flexDirection: "row",
+    alignItems: "center",
+    height: "8%",
+    marginBottom:20
+  },
+  cat:{
+    flexDirection: "row",
+    alignItems:"center",
+    width:"100%",
+    justifyContent:"space-between",
+    marginTop:10
+  }
 });
 export default HomeScreen;

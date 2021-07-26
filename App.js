@@ -7,14 +7,16 @@ import {NavigationContainer} from '@react-navigation/native';
 
 import Screen from './app/components/Screen';
 import Colors from './app/Colors';
-import Auth from './app/Auth';
+// import Onboarding from "./app/onBoarding"
+// import Auth from './app/Auth';
+import RootStack from './app/rootStacks/tabs';
 
 const Main = () => {
   return (
     <Screen>
       <NavigationContainer>
-        {/* <RootStack /> */}
-        <Auth/>
+        <RootStack />
+        {/* <Auth/> */}
         {/* <Onboarding/> */}
       </NavigationContainer>
     </Screen>

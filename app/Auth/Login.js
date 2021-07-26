@@ -44,11 +44,14 @@ const Login = ({navigation}) => {
       <View style={[styles.body, { paddingHorizontal: width * 0.05, width }]}>
         <AppInput
           label="Email Address"
-          width="100%"
           value={email}
           onChange={(text) => setEmail(text)}
           keyboardType="email-address"
           autoCapitalize="none"
+          containerStyle={{
+            width: "100%",
+            marginBottom:20
+          }}
           inputStyle={{
             height: 50,
           }}
@@ -60,7 +63,10 @@ const Login = ({navigation}) => {
           label="Password"
           onChange={(text) => setPassword(text)}
           secureTextEntry
-          width="100%"
+          containerStyle={{
+            width: "100%",
+            marginBottom:20
+          }}
           inputStyle={{
             height: 50,
           }}

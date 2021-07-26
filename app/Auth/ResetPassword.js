@@ -55,7 +55,10 @@ const ResetPassword = ({ navigation }) => {
       <View style={[styles.body, { paddingHorizontal: width * 0.05, width }]}>
         <AppInput
           label="New Password"
-          width="100%"
+          containerStyle={{
+            width: "100%",
+            marginBottom:20
+          }}
           value={phone}
           onChange={(text) => setNumber(text)}
           keyboardType="number-pad"

@@ -2,12 +2,13 @@ import React from 'react'
 import { View, StyleSheet, Text, TextInput } from 'react-native';
 import Colors from '../Colors';
 
-const AppInput =({inputStyle, label, labelStyle, width, onChange, ...props}) =>{
+const AppInput =({inputStyle, label, labelStyle, width, onChange, containerStyle, LeftIcon, ...props}) =>{
 
   return (
-    <View style={[styles.container, {width}]} >
-        <Text style={[styles.text, {...labelStyle}]}> {label} </Text>
-        <View style={[ styles.input_view,{...inputStyle}, ]}>
+    <View style={containerStyle} >
+        { label && <Text style={[styles.text, {...labelStyle}]}> {label} </Text>}
+      <View style={[ styles.input_view,{...inputStyle}, ]}>
+      { LeftIcon && <LeftIcon/> }
         <TextInput
             {...props}
             onChangeText={onChange}
@@ -27,7 +28,9 @@ const styles = StyleSheet.create({
    input_view:{
        borderWidth: 1,
        borderColor: Colors.gray,
-       borderRadius:5
+       borderRadius:5,
+       flexDirection: "row",
+       alignItems:"center"
    },
    text:{
        color: Colors.gray,

@@ -3,11 +3,11 @@ import {View, StyleSheet, Text, FlatList} from 'react-native';
 
 import Screen from '../components/Screen';
 
-const Order = () => {
+const Account = () => {
   return (
     <Screen>
       <View style={styles.container}>
-        <Text>order</Text>
+        <Text>account</Text>
       </View>
     </Screen>
   );
@@ -18,4 +18,4 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 });
-export default Order;
+export default Account;
