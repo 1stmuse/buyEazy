@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, StyleSheet, Text, TextInput } from 'react-native';
-import Colors from '../Colors';
+import Colors from '../../Colors';
 
 const AppInput =({inputStyle, label, labelStyle, width, onChange, containerStyle, LeftIcon, ...props}) =>{
 

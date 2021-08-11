@@ -1,7 +1,7 @@
 import React, {useRef, useState} from 'react'
 import { View, StyleSheet, Text, TextInput } from 'react-native';
 import PhoneInput from "react-native-phone-input";
-import Colors from '../Colors';
+import Colors from '../../Colors';
 
 const Phone =({inputStyle, label, labelStyle, width, ...props}) =>{
     const phoneInput = useRef<PhoneInput>(null);

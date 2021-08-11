@@ -9,8 +9,8 @@ import {
   Alert
 } from "react-native";
 import Colors from "../Colors";
-import AppButton from "../components/AppButton";
-import AppInput from "../components/AppInput";
+import AppButton from "../components/common/AppButton";
+import AppInput from "../components/common/AppInput";
 import { login } from "../api/auth"
 
 const ForgotPassword = ({navigation}) => {

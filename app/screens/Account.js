@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, StyleSheet, Text, FlatList} from 'react-native';
 
-import Screen from '../components/Screen';
+import Screen from '../components/common/Screen';
 
 const Account = () => {
   return (

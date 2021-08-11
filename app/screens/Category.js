@@ -3,7 +3,7 @@
 import React from 'react';
 import {View, StyleSheet, Text, ScrollView} from 'react-native';
 
-import Screen from '../components/Screen';
+import Screen from '../components/common/Screen';
 
 const History = () => {
   return (

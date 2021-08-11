@@ -7,7 +7,7 @@ import {
   Text,
 } from 'react-native';
 
-import Screen from '../components/Screen';
+import Screen from '../components/common/Screen';
 
 const FoodDetails = ({route, navigation}) => {
 

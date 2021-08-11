@@ -3,7 +3,7 @@ import { View, StyleSheet, Text } from 'react-native';
 import OPTInputView from "react-native-otp-field";
 import {OTP} from 'react-native-otp-form';
 import Colors from '../Colors';
-import AppButton from '../components/AppButton';
+import AppButton from '../components/common/AppButton';
 
 const VerifyOtp =({navigation}) =>{
 

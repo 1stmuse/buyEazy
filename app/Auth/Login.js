@@ -10,8 +10,8 @@ import {
 } from "react-native";
 import Logo from "../../assets/logo.svg";
 import Colors from "../Colors";
-import AppButton from "../components/AppButton";
-import AppInput from "../components/AppInput";
+import AppButton from "../components/common/AppButton";
+import AppInput from "../components/common/AppInput";
 import Google from "../../assets/google.svg";
 import Facebook from "../../assets/facebook.svg";
 import { login } from "../api/auth"

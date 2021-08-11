@@ -1,5 +1,4 @@
 import React from 'react'
-import { View, StyleSheet, Text } from 'react-native';
 import { createStackNavigator, TransitionPresets } from "@react-navigation/stack"
 import Login from './Login';
 import Register from './Register';
