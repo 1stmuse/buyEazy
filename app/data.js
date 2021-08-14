@@ -30,3 +30,70 @@ export const swiperData = [
     color: "#d95975"
   },
 ]
+
+export const Products = [
+  {
+    id: '1',
+    name:  "crysler" ,
+    price:340,
+    percentOff: 40,
+    image: require("../assets/images/headphone.png"),
+
+  },
+  {
+    id: '2',
+    name: "xSeries watch",
+    price: 580,
+    percentOff: 21,
+    image: require('../assets/images/apllwa.png'),
+  },
+  {
+    id: '3',
+    name: 'samsung S4',
+    price: 280,
+    percentOff: 10,
+    image: require('../assets/images/shop.png'),
+  },
+  {
+    id: '4',
+    name: 'iphone 12',
+    price: 120,
+    percentOff: 5,
+    image: require('../assets/images/iphone.png'),
+  },
+  {
+    id: '5',
+    name: 'jamessom',
+    price: 1200,
+    percentOff: 5,
+    image: require('../assets/images/watch.png'),
+  },
+  {
+    id: '6',
+    name: 'Xaiomi headphone',
+    price: 120,
+    percentOff: 5,
+    image: require('../assets/images/watch.png'),
+  },
+  {
+    id: '7',
+    name: 'laptop Dell',
+    price: 1020,
+    percentOff: 5,
+    image: require('../assets/images/lapt.png'),
+  },
+  {
+    id: '8',
+    name: 'heels',
+    price: 120,
+    percentOff: 5,
+    image: require('../assets/images/watch.png'),
+  },
+  {
+    id: '9',
+    name: 'bicyle xl',
+    price: 600,
+    percentOff: 5,
+    image: require('../assets/images/iphone.png'),
+  },
+]
