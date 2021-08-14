@@ -3,6 +3,8 @@ import { View, StyleSheet, Text, Image } from "react-native";
 import Colors from "../../Colors";
 import { AntDesign } from "@expo/vector-icons"
 
+
+
 const ProductCard = ({ data }) => {
   const { image, name, price, id, percentOff } = data;
   return (
