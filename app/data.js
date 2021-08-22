@@ -97,3 +97,56 @@ export const Products = [
     image: require('../assets/images/iphone.png'),
   },
 ]
+
+export const Cats = [
+  {
+    id: "1",
+    name: "Laptop",
+    img: "https://media.self.com/photos/5f189b76c58e27c99fbef9e3/1:1/w_768,c_limit/blackberry-vanilla-french-toast.jpg"
+  },
+  {
+    id: "2",
+    name: "Phones",
+    img: "https://media.self.com/photos/5f189b76c58e27c99fbef9e3/1:1/w_768,c_limit/blackberry-vanilla-french-toast.jpg"
+  },
+  {
+    id: "3",
+    name: "Watch",
+    img: "https://media.self.com/photos/5f189b76c58e27c99fbef9e3/1:1/w_768,c_limit/blackberry-vanilla-french-toast.jpg"
+  },
+  {
+    id: "4",
+    name: "Heels",
+    img: "https://media.self.com/photos/5f189b76c58e27c99fbef9e3/1:1/w_768,c_limit/blackberry-vanilla-french-toast.jpg"
+  },
+  {
+    id: "5",
+    name: "Smart Watch",
+    img: "https://media.self.com/photos/5f189b76c58e27c99fbef9e3/1:1/w_768,c_limit/blackberry-vanilla-french-toast.jpg"
+  },
+  {
+    id: "6",
+    name: "Android Phones",
+    img: "https://media.self.com/photos/5f189b76c58e27c99fbef9e3/1:1/w_768,c_limit/blackberry-vanilla-french-toast.jpg"
+  },
+  {
+    id: "7",
+    name: "Home Theatre",
+    img: "https://media.self.com/photos/5f189b76c58e27c99fbef9e3/1:1/w_768,c_limit/blackberry-vanilla-french-toast.jpg"
+  },
+  {
+    id: "8",
+    name: "Flatscreen Tv",
+    img: "https://media.self.com/photos/5f189b76c58e27c99fbef9e3/1:1/w_768,c_limit/blackberry-vanilla-french-toast.jpg"
+  },
+  {
+    id: "9",
+    name: "Android Phones",
+    img: "https://media.self.com/photos/5f189b76c58e27c99fbef9e3/1:1/w_768,c_limit/blackberry-vanilla-french-toast.jpg"
+  },
+  {
+    id: "10",
+    name: "Android Phones",
+    img: "https://media.self.com/photos/5f189b76c58e27c99fbef9e3/1:1/w_768,c_limit/blackberry-vanilla-french-toast.jpg"
+  }
+]

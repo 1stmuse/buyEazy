@@ -9,7 +9,13 @@ const CategoryStacks = () => {
 
     return (
         <stack.Navigator>
-            <stack.Screen name="home" component={Cartegory}/>
+            <stack.Screen  
+                name="category" 
+                component={Cartegory}
+                options={{
+                    headerShown: false
+                }}
+            />
         </stack.Navigator>
     )
 }

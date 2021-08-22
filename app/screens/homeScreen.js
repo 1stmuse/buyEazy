@@ -10,40 +10,24 @@ import Category from '../components/Category';
 import ProductCard from '../components/common/ProductCard';
 import Swipers from "../components/homepage/Swiper"
 
-import Cart from "../../assets/shopping_cart.svg";
-import Search from "../../assets/Search.svg";
 import Phones from "../../assets/images/phones.svg";
 import Laptop from "../../assets/images/laptop.svg";
 import Watch from "../../assets/images/wristwatch.svg";
 import Heels from "../../assets/images/heels.svg";
 
-import { Products } from "../data"
+import { Products, Cats } from "../data"
+import SearchHeader from '../components/common/SearchHeader';
 
 const {height} = Dimensions.get("screen")
 
 const HomeScreen = () => {
-
+  const [a, b, c, d] = Cats
   return (
     <Screen style={{paddingTop: 20, flex:1}}>
       <ScrollView style={{flex:1}}>
         <View style={styles.main}>
           <View style={{paddingHorizontal:20,}}>
-            <View style={styles.search}>
-              <AppInput
-                LeftIcon = {() => <Search/>}
-                placeholder = "Search for Products"
-                inputStyle={{
-                  height: "100%",
-                }}
-                containerStyle={{
-                  height: "100%",
-                  width: "85%"
-                }}
-              />
-              <View style={{width: "10%", marginLeft:"5%"}}>
-                <Cart />
-              </View>
-            </View>
+            <SearchHeader placeholder="Search for Products" />
             <View style={{flexDirection:"row", justifyContent:"space-between", alignItems:"center"}}>
               <Text style={{fontSize:20}} >Top Categories</Text>
               <TouchableOpacity>
@@ -51,38 +35,10 @@ const HomeScreen = () => {
               </TouchableOpacity>
             </View>
             <View style={styles.cat}>
-                <Category text="Laptop" Img={Laptop} 
-                  height="50"
-                  width="200"
-                  style={{
-                    width: "23%",
-                    height: 80
-                  }}
-                />
-                <Category text="Phones" Img={Phones}
-                  height="50"
-                  width="200"
-                  style={{
-                    width: "23%",
-                    height: 80
-                  }}
-                />
-                <Category text="Watch" Img={Watch} 
-                  height="50"
-                  width="200"
-                  style={{
-                    width: "23%",
-                    height: 80
-                  }}
-                />
-                <Category text="Heels" Img={Heels} 
-                  height="50"
-                  width="200"
-                  style={{
-                    width: "23%",
-                    height: 80,
-                  }}
-                />
+                <Category data={a}  top />
+                <Category data={b} top />
+                <Category data={c} top />
+                <Category data={d} top />
             </View>
           </View>
           <View style={{height:200, marginBottom:10}}>
@@ -98,7 +54,7 @@ const HomeScreen = () => {
             </View>
             <View style={styles.products} >
               {Products.map((ob) => (
-                <View style={styles.product}>
+                <View key={ob.id} style={styles.product}>
                   <ProductCard data={ob} />
                 </View>
               ))}
@@ -114,12 +70,6 @@ const styles = StyleSheet.create({
     flex: 1,
     marginTop: 10,
     backgroundColor: 'white',
-  },
-  search: {
-    flexDirection: "row",
-    alignItems: "center",
-    height: 40,
-    marginBottom:20
   },
   cat:{
     flexDirection: "row",
