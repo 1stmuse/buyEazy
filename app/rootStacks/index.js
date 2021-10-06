@@ -1,10 +1,12 @@
-import React from 'react';
-import {createStackNavigator} from '@react-navigation/stack';
+import React from "react";
+import { createStackNavigator } from "@react-navigation/stack";
 // import { createDrawerNavigator } from '@react-navigation/drawer';
 
 // import screens
-import TabRoot from './tabs/index';
-import FoodDetails from '../screens/FoodDetails';
+import TabRoot from "./tabs/index";
+import ProductDetails from "../screens/productDetail";
+import AllProducts from "../screens/AllProducts";
+import Cart from "../screens/Cart";
 
 const options = {
   headerShown: false,
@@ -21,8 +23,24 @@ const stack = createStackNavigator();
 const RootStack = () => {
   return (
     <stack.Navigator>
-      <stack.Screen name="homeRoot" children={TabRoot} options={{...options}} />
-      <stack.Screen name="foodDetail" component={FoodDetails} />
+      <stack.Screen name="home" children={TabRoot} options={{ ...options }} />
+      <stack.Screen
+        name="product_detail"
+        component={ProductDetails}
+        options={{ ...options }}
+      />
+      <stack.Screen
+        name="all_products"
+        component={AllProducts}
+        options={{ ...options }}
+      />
+      <stack.Screen
+        name="cart"
+        component={Cart}
+        options={{
+          headerBackTitleVisible: false,
+        }}
+      />
     </stack.Navigator>
   );
 };
