@@ -8,21 +8,46 @@ import {
   useWindowDimensions,
   Image,
   ScrollView,
+  Modal,
 } from "react-native";
 
 import Screen from "../components/common/Screen";
 import AppButton from "../components/common/AppButton";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import Colors from "../Colors";
+import AddToCartSuccess from "../components/AddToCartSuccess";
 
 const demoText =
   "The iphone 12 Por max is the latest producrs of Apple and it works with 5g giving you the power to browse completely fast wwithout having inter delapy. Check out ouy on the bext platforms where you can get it boss";
 
 const ProductDetails = ({ route, navigation }) => {
   const { height } = useWindowDimensions();
+  const [showModal, setShowModal] = React.useState(false);
   const { data } = route.params;
+
+  const goToCart = () => {
+    setShowModal(false);
+    navigation.navigate("cart");
+  };
+
+  const continueShopping = () => {
+    setShowModal(false);
+  };
+
+  const addToCart = () => {
+    setShowModal(true);
+  };
+
   return (
     <View style={styles.main}>
+      <Modal visible={showModal} transparent animationType="fade">
+        <View style={styles.modal}>
+          <AddToCartSuccess
+            goToCart={goToCart}
+            continueShopping={continueShopping}
+          />
+        </View>
+      </Modal>
       <View
         style={[
           styles.center,
@@ -115,6 +140,7 @@ const ProductDetails = ({ route, navigation }) => {
           <View style={{ flexDirection: "row" }}>
             <AppButton
               text="ADD TO CART"
+              onClick={addToCart}
               style={{
                 backgroundColor: Colors.primary,
                 width: 200,
@@ -157,6 +183,13 @@ const styles = StyleSheet.create({
     height: 0.13,
     backgroundColor: Colors.gray,
     marginVertical: 20,
+  },
+  modal: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "rgba(0,0,0, 0.7)",
+    paddingHorizontal: 20,
   },
 });
 export default ProductDetails;

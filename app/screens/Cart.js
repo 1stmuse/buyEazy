@@ -6,19 +6,22 @@ import CartItem from "../components/CartItem";
 import AppButton from "../components/common/AppButton";
 import { Products } from "../data";
 
-const Cart = () => {
-  const data = Products[1];
+const Cart = ({ navigation }) => {
+  const checkout = () => {
+    navigation.navigate("checkout");
+  };
   return (
     <ScrollView
       contentContainerStyle={{
         paddingVertical: 20,
       }}
       style={styles.container}
+      showsVerticalScrollIndicator={false}
     >
-      <CartItem data={data} />
-      <CartItem data={data} />
-      <CartItem data={data} />
-      <CartItem data={data} />
+      <CartItem data={Products[1]} />
+      <CartItem data={Products[3]} />
+      <CartItem data={Products[0]} />
+      <CartItem data={Products[5]} />
       {/* <CartItem data={data} /> */}
       {/* <CartItem data={data} /> */}
       {/* <CartItem data={data} /> */}
@@ -29,6 +32,7 @@ const Cart = () => {
         </View>
         <AppButton
           text="CHECKOUT"
+          onClick={checkout}
           style={{
             backgroundColor: Colors.primary,
             width: "100%",

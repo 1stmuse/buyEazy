@@ -7,6 +7,7 @@ import TabRoot from "./tabs/index";
 import ProductDetails from "../screens/productDetail";
 import AllProducts from "../screens/AllProducts";
 import Cart from "../screens/Cart";
+import Checkout from "../screens/Checkout";
 
 const options = {
   headerShown: false,
@@ -39,6 +40,14 @@ const RootStack = () => {
         component={Cart}
         options={{
           headerBackTitleVisible: false,
+        }}
+      />
+      <stack.Screen
+        name="checkout"
+        component={Checkout}
+        options={{
+          headerBackTitleVisible: false,
+          headerShown: false,
         }}
       />
     </stack.Navigator>
