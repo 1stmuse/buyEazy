@@ -50,6 +50,7 @@ const styles = StyleSheet.create({
   tabView: {
     flexDirection: "row",
     borderBottomWidth: 0.5,
+    borderBottomColor: Colors.gray,
     justifyContent: "space-around",
     paddingHorizontal: 20,
     backgroundColor: "white",

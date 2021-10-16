@@ -10,6 +10,7 @@ import {
 import Colors from "../Colors";
 import { RadioButton } from "react-native-paper";
 import { useNavigation } from "@react-navigation/native";
+import * as Animatable from "react-native-animatable";
 import Valid from "../../assets/valid.svg";
 import AppButton from "./common/AppButton";
 
@@ -34,7 +35,7 @@ const Payment = () => {
 
   const PaymentSuccessful = () => {
     return (
-      <View style={styles.confirmCard}>
+      <Animatable.View animation="slideInUp" style={styles.confirmCard}>
         <Valid />
         <Text
           style={{
@@ -69,13 +70,13 @@ const Payment = () => {
           }}
           textStyle={{ color: "white" }}
         />
-      </View>
+      </Animatable.View>
     );
   };
 
   const ConfirmCardPayment = () => {
     return (
-      <View style={styles.confirmCard}>
+      <Animatable.View animation="slideInUp" style={styles.confirmCard}>
         <Text
           style={{
             fontWeight: "bold",
@@ -118,18 +119,18 @@ const Payment = () => {
           }}
           textStyle={{ color: "white" }}
         />
-      </View>
+      </Animatable.View>
     );
   };
 
   return (
     <ScrollView style={styles.container}>
-      <Modal transparent visible={showModal}>
+      <Modal transparent visible={showModal} animationType="fade">
         <View style={styles.modal}>
           <ConfirmCardPayment />
         </View>
       </Modal>
-      <Modal transparent visible={showPaySuccess}>
+      <Modal transparent visible={showPaySuccess} animationType="fade">
         <View style={styles.modal}>
           <PaymentSuccessful />
         </View>
