@@ -33,9 +33,19 @@ const Payment = () => {
     setShowPaySuccess(true);
   };
 
+  const viewOrder = () => {
+    setShowPaySuccess(false);
+    setShowModal(false);
+    navigation.navigate("orders");
+  };
+
   const PaymentSuccessful = () => {
     return (
-      <Animatable.View animation="slideInUp" style={styles.confirmCard}>
+      <Animatable.View
+        duration={500}
+        animation="slideInUp"
+        style={styles.confirmCard}
+      >
         <Valid />
         <Text
           style={{
@@ -63,7 +73,7 @@ const Payment = () => {
         />
         <AppButton
           text="VIEW YOUR ORDERS"
-          onClick={() => navigation.navigate("orders")}
+          onClick={viewOrder}
           style={{
             ...styles.btnD,
             marginVertical: 5,
@@ -76,7 +86,11 @@ const Payment = () => {
 
   const ConfirmCardPayment = () => {
     return (
-      <Animatable.View animation="slideInUp" style={styles.confirmCard}>
+      <Animatable.View
+        duration={500}
+        animation="slideInUp"
+        style={styles.confirmCard}
+      >
         <Text
           style={{
             fontWeight: "bold",

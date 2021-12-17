@@ -6,17 +6,16 @@ import { AntDesign } from "@expo/vector-icons";
 
 const ProductCard = ({ data, style, width }) => {
   const navigation = useNavigation();
-  const { image, name, price, id, percentOff } = data;
+  const { name, price, percentOff, images } = data;
   return (
     <Pressable
       onPress={() => navigation.navigate("product_detail", { data })}
       style={[styles.container, { ...style, width }]}
-      key={id}
     >
       <View style={styles.img}>
         <Image
           resizeMode="center"
-          source={image}
+          source={{ uri: images[0] }}
           style={{ width: "100%", height: "100%" }}
         />
       </View>
@@ -28,9 +27,9 @@ const ProductCard = ({ data, style, width }) => {
           flex: 1,
         }}
       >
-        <Text style={{ fontSize: 18 }}>{name}</Text>
+        <Text style={{ fontSize: 18 }}>{name.slice(0, 20)}...</Text>
         <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
-          <Text style={{ fontSize: 18 }}>${price}.00</Text>
+          <Text style={{ fontSize: 18 }}>${price}</Text>
           <AntDesign name="hearto" size={20} color={Colors.primary} />
         </View>
       </View>

@@ -58,10 +58,10 @@ const TabRoot = () => {
         }}
       />
       <tabs.Screen
-        name="account"
+        name="profile"
         component={AccountStacks}
         options={{
-          tabBarLabel: "Account",
+          tabBarLabel: "Profile",
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons name="account" color={color} size={size} />
           ),

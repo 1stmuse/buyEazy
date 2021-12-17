@@ -27,7 +27,7 @@ const OrderItem = ({ data }) => {
 
   const OrderSummary = ({ data }) => {
     return (
-      <Animatable.View animation="slideInUp" style={styles.mod}>
+      <Animatable.View duration={500} animation="slideInUp" style={styles.mod}>
         <View style={{ alignItems: "flex-end" }}>
           <AntDesign
             name="close"

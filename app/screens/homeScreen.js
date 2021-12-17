@@ -1,6 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable no-unused-vars */
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   View,
   StyleSheet,
@@ -15,12 +15,36 @@ import Colors from "../Colors";
 import Category from "../components/Category";
 import ProductCard from "../components/common/ProductCard";
 import Swipers from "../components/homepage/Swiper";
+import { getAllCategory } from "../api/category";
+import { getProducts } from "../api/products";
 
 import { Products, Cats } from "../data";
 import SearchHeader from "../components/common/SearchHeader";
 
 const HomeScreen = ({ navigation }) => {
-  const [a, b, c, d] = Cats;
+  const [cat, setCat] = useState([]);
+  const [products, setProducts] = useState([]);
+  const getCat = async () => {
+    const { data, ok } = await getAllCategory();
+    // console.log(data);
+    if (ok) {
+      setCat(data.data.slice(0, 4));
+    }
+  };
+
+  const getProduct = async () => {
+    const { data, ok } = await getProducts();
+    // console.log(data.data.slice(0, 2));
+    if (ok) {
+      setProducts(data.data.slice(0, 10));
+    }
+  };
+
+  useEffect(() => {
+    getCat();
+    getProduct();
+  }, []);
+
   return (
     <Screen style={{ paddingTop: 20, flex: 1 }}>
       <ScrollView style={{ flex: 1 }}>
@@ -41,12 +65,17 @@ const HomeScreen = ({ navigation }) => {
                 </Text>
               </TouchableOpacity>
             </View>
-            <View style={styles.cat}>
-              <Category data={a} top />
-              <Category data={b} top />
-              <Category data={c} top />
-              <Category data={d} top />
-            </View>
+            <ScrollView
+              horizontal
+              showsHorizontalScrollIndicator={false}
+              style={styles.cat}
+            >
+              {cat.map((cat) => (
+                <View key={cat.id} style={{ flex: 1 }}>
+                  <Category data={cat} top />
+                </View>
+              ))}
+            </ScrollView>
           </View>
           <View style={{ height: 200, marginBottom: 10 }}>
             <Swipers />
@@ -70,8 +99,8 @@ const HomeScreen = ({ navigation }) => {
             </View>
           </View>
           <View style={styles.products}>
-            {Products.map((ob) => (
-              <View key={ob.id} style={styles.product}>
+            {products.map((ob) => (
+              <View key={ob._id} style={styles.product}>
                 <ProductCard data={ob} />
               </View>
             ))}
@@ -89,10 +118,7 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
   },
   cat: {
-    flexDirection: "row",
-    alignItems: "center",
-    width: "100%",
-    justifyContent: "space-between",
+    flex: 1,
     marginVertical: 10,
   },
   products: {
