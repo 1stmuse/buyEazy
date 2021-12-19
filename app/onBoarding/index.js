@@ -40,9 +40,9 @@ const onBoard = () => {
     <View style={[styles.boarding_container, { width }]}>
       {currentIndex < Slides.length - 1 ? (
         <View style={styles.skipView}>
-          <TouchableOpacity>
+          <Pressable onPress={() => navigation.navigate("auth")}>
             <Text>SKIP</Text>
-          </TouchableOpacity>
+          </Pressable>
         </View>
       ) : null}
       <View style={{ flex: 1 }}>
@@ -69,7 +69,10 @@ const onBoard = () => {
         <Dots slides={Slides} scrollX={scrollX} />
         {currentIndex === Slides.length - 1 ? (
           <View style={{ alignItems: "center" }}>
-            <Pressable style={styles.start}>
+            <Pressable
+              style={styles.start}
+              onPress={() => navigation.navigate("auth")}
+            >
               <Text style={{ color: Colors.primary }}>Get Started</Text>
             </Pressable>
           </View>

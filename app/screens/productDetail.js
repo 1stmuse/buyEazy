@@ -16,11 +16,11 @@ import AppButton from "../components/common/AppButton";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import Colors from "../Colors";
 import AddToCartSuccess from "../components/AddToCartSuccess";
-
-const demoText =
-  "The iphone 12 Por max is the latest producrs of Apple and it works with 5g giving you the power to browse completely fast wwithout having inter delapy. Check out ouy on the bext platforms where you can get it boss";
+import { useDispatch } from "react-redux";
+import { ADD_TO_CART } from "../redux/actions";
 
 const ProductDetails = ({ route, navigation }) => {
+  const dispatch = useDispatch();
   const { height } = useWindowDimensions();
   const [showModal, setShowModal] = React.useState(false);
   const { data } = route.params;
@@ -35,7 +35,17 @@ const ProductDetails = ({ route, navigation }) => {
   };
 
   const addToCart = () => {
+    const cartData = {
+      image: data.images[0],
+      id: data._id,
+      price: data.price,
+      name: data.name,
+      quantity: 1,
+    };
+
+    dispatch({ type: ADD_TO_CART, payload: { item: cartData } });
     setShowModal(true);
+    // console.log(cartData);
   };
 
   return (
@@ -69,18 +79,20 @@ const ProductDetails = ({ route, navigation }) => {
       >
         <View style={[styles.imgView, { height: height * 0.43 }]}>
           <Image
-            source={data.image}
+            source={{ uri: data.images[0] }}
             style={{ width: "100%", height: "100%" }}
           />
         </View>
         <View style={styles.details}>
           <View style={styles.center}>
             <Text style={styles.bigTxt}>{data.name}</Text>
-            <MaterialCommunityIcons
-              name="heart-outline"
-              color={Colors.primary}
-              size={30}
-            />
+            <View>
+              <MaterialCommunityIcons
+                name="heart-outline"
+                color={Colors.primary}
+                size={30}
+              />
+            </View>
           </View>
           <Text style={styles.bigTxt}>${data.price} </Text>
           <View
@@ -94,7 +106,7 @@ const ProductDetails = ({ route, navigation }) => {
                 marginRight: 10,
               }}
             >
-              ${`${data.price + 100}`}
+              {Number(data.price) + 100}
             </Text>
             <Text
               style={{
@@ -123,7 +135,7 @@ const ProductDetails = ({ route, navigation }) => {
               Description
             </Text>
             <View>
-              {demoText.split(".").map((text, ind) => (
+              {data.description.split(".").map((text, ind) => (
                 <Text
                   style={{
                     fontSize: 14,
@@ -177,6 +189,8 @@ const styles = StyleSheet.create({
   },
   bigTxt: {
     fontSize: 20,
+    flex: 1,
+    marginRight: 10,
   },
   line: {
     width: "100%",

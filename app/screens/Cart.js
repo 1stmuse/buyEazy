@@ -5,8 +5,15 @@ import Colors from "../Colors";
 import CartItem from "../components/CartItem";
 import AppButton from "../components/common/AppButton";
 import { Products } from "../data";
+import { useDispatch, useSelector } from "react-redux";
 
 const Cart = ({ navigation }) => {
+  const { cartItems, numberOfItems } = useSelector((state) => state.cart);
+
+  const totalPrice = cartItems.reduce((acc, val) => {
+    return (acc += val.price * val.quantity);
+  }, 0);
+
   const checkout = () => {
     navigation.navigate("checkout");
   };
@@ -18,17 +25,14 @@ const Cart = ({ navigation }) => {
       style={styles.container}
       showsVerticalScrollIndicator={false}
     >
-      <CartItem data={Products[1]} />
-      <CartItem data={Products[3]} />
-      <CartItem data={Products[0]} />
-      <CartItem data={Products[5]} />
-      {/* <CartItem data={data} /> */}
-      {/* <CartItem data={data} /> */}
-      {/* <CartItem data={data} /> */}
+      {cartItems.map((ob) => (
+        <CartItem data={ob} key={ob.id} />
+      ))}
+
       <View style={styles.cartSum}>
         <View style={styles.spaceCenter}>
-          <Text>Total Items (1)</Text>
-          <Text>$600.00</Text>
+          <Text>Total Items ({numberOfItems})</Text>
+          <Text>{`$${totalPrice.toFixed(2)}`}</Text>
         </View>
         <AppButton
           text="CHECKOUT"

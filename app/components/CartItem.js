@@ -1,27 +1,52 @@
 import { AntDesign } from "@expo/vector-icons";
 import React from "react";
-import { View, StyleSheet, Text, Image } from "react-native";
+import { View, StyleSheet, Text, Image, Pressable } from "react-native";
 import Colors from "../Colors";
+import { useDispatch } from "react-redux";
+import {
+  INCREASE_ITEM_QUANTITY,
+  DECREASE_ITEM_QUANTITY,
+  REMOVE_FROM_CART,
+} from "../redux/actions";
 
 const CartItem = ({ data }) => {
+  const dispatch = useDispatch();
+
+  const editItemQuantity = (action) => {
+    if (action === "inc") {
+      dispatch({ type: INCREASE_ITEM_QUANTITY, payload: { id: data.id } });
+    } else {
+      dispatch({ type: DECREASE_ITEM_QUANTITY, payload: { id: data.id } });
+    }
+  };
+
+  const removeItem = () => {
+    dispatch({ type: REMOVE_FROM_CART, payload: { id: data.id } });
+  };
+
   return (
     <View style={styles.main}>
       <View style={styles.details}>
         <View>
-          <Image source={data.image} style={{ width: 70, height: 70 }} />
+          <Image
+            source={{ uri: data.image }}
+            style={{ width: 70, height: 70 }}
+          />
         </View>
         <View style={styles.info}>
-          <AntDesign
-            style={{ alignSelf: "flex-end" }}
-            name="close"
-            color={Colors.gray}
-            size={16}
-          />
-          <Text style={[styles.qty]}> {data.name} </Text>
+          <Pressable onPress={removeItem}>
+            <AntDesign
+              style={{ alignSelf: "flex-end" }}
+              name="close"
+              color={Colors.gray}
+              size={16}
+            />
+          </Pressable>
+          <Text style={[styles.qty]}> {data.name.slice(0, 10)}... </Text>
           <Text
             style={[styles.qty, { color: Colors.primary, fontWeight: "bold" }]}
           >
-            ${data.price}
+            ${data.price * data.quantity}
           </Text>
         </View>
       </View>
@@ -29,9 +54,13 @@ const CartItem = ({ data }) => {
         style={{ width: "100%", height: 0.4, backgroundColor: Colors.gray }}
       />
       <View style={styles.controls}>
-        <AntDesign name="minuscircleo" color={Colors.primary} size={18} />
-        <Text style={styles.qty}>1</Text>
-        <AntDesign name="pluscircleo" color={Colors.primary} size={18} />
+        <Pressable onPress={() => editItemQuantity("dec")}>
+          <AntDesign name="minuscircleo" color={Colors.primary} size={18} />
+        </Pressable>
+        <Text style={styles.qty}>{data.quantity}</Text>
+        <Pressable onPress={() => editItemQuantity("inc")}>
+          <AntDesign name="pluscircleo" color={Colors.primary} size={18} />
+        </Pressable>
       </View>
     </View>
   );
