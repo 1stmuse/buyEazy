@@ -8,6 +8,7 @@ import ProductDetails from "../screens/productDetail";
 import AllProducts from "../screens/AllProducts";
 import Cart from "../screens/Cart";
 import Checkout from "../screens/Checkout";
+import CategoryList from "../screens/CategoryList";
 
 const options = {
   headerShown: false,
@@ -49,6 +50,13 @@ const RootStack = () => {
           headerBackTitleVisible: false,
           headerShown: false,
         }}
+      />
+      <stack.Screen
+        name="category_list"
+        component={CategoryList}
+        options={({ route }) => ({
+          headerTitle: route.params?.title,
+        })}
       />
     </stack.Navigator>
   );

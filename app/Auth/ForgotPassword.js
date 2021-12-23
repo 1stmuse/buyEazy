@@ -1,46 +1,56 @@
-import React, {useState, useCallback} from "react";
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import React, { useState, useCallback } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import {
   View,
   StyleSheet,
   Text,
   useWindowDimensions,
   TouchableOpacity,
-  Alert
+  Alert,
 } from "react-native";
 import Colors from "../Colors";
 import AppButton from "../components/common/AppButton";
 import AppInput from "../components/common/AppInput";
-import { login } from "../api/auth"
+import { login } from "../api/api";
 
-const ForgotPassword = ({navigation}) => {
+const ForgotPassword = ({ navigation }) => {
   const { width, height } = useWindowDimensions();
-  const [phone, setNumber] = useState("")
+  const [phone, setNumber] = useState("");
 
-//   const submit = useCallback(async () =>{
+  //   const submit = useCallback(async () =>{
 
-//     const response = await login({phone,})
-//     if(response.ok) {
-//       // console.log(response.data.token)
-//       await AsyncStorage.setItem('token', response.data.token)
-//       return
-//     }
-//     Alert.alert("Error", response.data.message,)
-//     console.log(response.data.message) 
-//   }, [phone])
+  //     const response = await login({phone,})
+  //     if(response.ok) {
+  //       // console.log(response.data.token)
+  //       await AsyncStorage.setItem('token', response.data.token)
+  //       return
+  //     }
+  //     Alert.alert("Error", response.data.message,)
+  //     console.log(response.data.message)
+  //   }, [phone])
 
   return (
     <View style={[styles.container]}>
-        <View style={{width, alignItems: "flex-end", paddingHorizontal: 20}}>
-            <TouchableOpacity style={{marginTop:10}} onPress={() => navigation.goBack()} >
-                <Text style={{fontSize:17}}>Back</Text>
-            </TouchableOpacity>
-        </View>
-      <View style={[styles.logo, { marginTop: height * 0.1, marginTop: height * 0.14 }]}>
+      <View style={{ width, alignItems: "flex-end", paddingHorizontal: 20 }}>
+        <TouchableOpacity
+          style={{ marginTop: 10 }}
+          onPress={() => navigation.goBack()}
+        >
+          <Text style={{ fontSize: 17 }}>Back</Text>
+        </TouchableOpacity>
+      </View>
+      <View
+        style={[
+          styles.logo,
+          { marginTop: height * 0.1, marginTop: height * 0.14 },
+        ]}
+      >
         <Text style={styles.sign_in}>Reset Password</Text>
       </View>
       <View style={{ alignItems: "center", marginVertical: 20 }}>
-        <Text style={styles.text}>Enter your registered phone number to get a password reset OTP</Text>
+        <Text style={styles.text}>
+          Enter your registered phone number to get a password reset OTP
+        </Text>
       </View>
       <View style={[styles.body, { paddingHorizontal: width * 0.05, width }]}>
         <AppInput
@@ -60,20 +70,19 @@ const ForgotPassword = ({navigation}) => {
 
         <AppButton
           text="GET RESET OTP"
-        //   onClick={submit}
-        onClick={() => navigation.navigate("verify_otp")}
+          //   onClick={submit}
+          onClick={() => navigation.navigate("verify_otp")}
           style={{
             backgroundColor: Colors.primary,
             width: "100%",
-            height:50,
+            height: 50,
             borderRadius: 6,
-            marginTop: 20
+            marginTop: 20,
           }}
           textStyle={{
-              color: Colors.white
+            color: Colors.white,
           }}
         />
-
       </View>
     </View>
   );
@@ -93,14 +102,13 @@ const styles = StyleSheet.create({
     fontSize: 27,
   },
   text: {
-      color:"black",
-      textAlign:"center",
-      fontSize:19
+    color: "black",
+    textAlign: "center",
+    fontSize: 19,
   },
   body: {
     flex: 1,
     alignItems: "center",
   },
-
 });
 export default ForgotPassword;

@@ -14,7 +14,7 @@ import AppButton from "../components/common/AppButton";
 import AppInput from "../components/common/AppInput";
 import Google from "../../assets/google.svg";
 import Facebook from "../../assets/facebook.svg";
-import { register } from "../api/auth";
+import { register } from "../api/api";
 import { Snackbar } from "react-native-paper";
 
 const Register = ({ navigation }) => {

@@ -9,11 +9,17 @@ import Colors from "../../Colors";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { useDispatch } from "react-redux";
 import { LOGOUT_ACTION } from "../../redux/actions";
+import storage from "@react-native-async-storage/async-storage";
 
 const Settings = ({ navigation, route }) => {
   const dispatch = useDispatch();
   const navigate = (routeName) => {
     navigation.navigate(routeName);
+  };
+
+  const logout = async () => {
+    await storage.removeItem("token");
+    dispatch({ type: LOGOUT_ACTION });
   };
 
   return (
@@ -50,7 +56,7 @@ const Settings = ({ navigation, route }) => {
           </View>
         </View>
       </Touchable>
-      <Touchable onPress={() => dispatch({ type: LOGOUT_ACTION })}>
+      <Touchable onPress={logout}>
         <View style={styles.flex}>
           <Text>Logout</Text>
         </View>

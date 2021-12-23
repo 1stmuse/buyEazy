@@ -11,7 +11,7 @@ import {
 import Colors from "../Colors";
 import AppButton from "../components/common/AppButton";
 import AppInput from "../components/common/AppInput";
-import { login } from "../api/auth";
+import { login } from "../api/api";
 
 const ResetPassword = ({ navigation }) => {
   const { width, height } = useWindowDimensions();
@@ -48,16 +48,14 @@ const ResetPassword = ({ navigation }) => {
         <Text style={styles.sign_in}>Create a new password</Text>
       </View>
       <View style={{ alignItems: "center", marginVertical: 20 }}>
-        <Text style={styles.text}>
-          Enter your new preferred password
-        </Text>
+        <Text style={styles.text}>Enter your new preferred password</Text>
       </View>
       <View style={[styles.body, { paddingHorizontal: width * 0.05, width }]}>
         <AppInput
           label="New Password"
           containerStyle={{
             width: "100%",
-            marginBottom:20
+            marginBottom: 20,
           }}
           value={phone}
           onChange={(text) => setNumber(text)}
@@ -118,7 +116,7 @@ const styles = StyleSheet.create({
   sign_in: {
     color: Colors.gray,
     fontSize: 27,
-    fontWeight:"bold"
+    fontWeight: "bold",
   },
   text: {
     color: "black",

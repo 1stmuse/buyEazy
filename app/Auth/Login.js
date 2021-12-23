@@ -15,7 +15,7 @@ import AppButton from "../components/common/AppButton";
 import AppInput from "../components/common/AppInput";
 import Google from "../../assets/google.svg";
 import Facebook from "../../assets/facebook.svg";
-import { login } from "../api/auth";
+import { login } from "../api/api";
 import { Snackbar } from "react-native-paper";
 import { useDispatch } from "react-redux";
 import { LOGIN_ACTION } from "../redux/actions";
@@ -45,7 +45,7 @@ const Login = ({ navigation }) => {
       payload: { authed: true, token: data.token },
     });
     // navigation.navigate("home");
-    return;
+    // return;
 
     // Alert.alert("Error", response.data.message);
   }, [email, password]);

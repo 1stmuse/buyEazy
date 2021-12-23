@@ -25,7 +25,7 @@ const Main = () => {
   const getVisit = async () => {
     try {
       const value = await storage.getItem("visited");
-
+      console.log(value);
       if (value === null) {
         await storage.setItem("visited", "true");
         setVisited(false);
@@ -41,6 +41,7 @@ const Main = () => {
   const getAuth = async () => {
     try {
       const tokenStore = await storage.getItem("token");
+      console.log(tokenStore);
       if (tokenStore !== null) {
         dispatch({
           type: LOGIN_ACTION,

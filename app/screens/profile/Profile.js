@@ -3,11 +3,28 @@ import { View, StyleSheet, Text, Image } from "react-native";
 import AppButton from "../../components/common/AppButton";
 // import Screen from "../../components/Screen";
 import Colors from "../../Colors";
+import { getUser } from "../../api/api";
+import { useSelector, useDispatch } from "react-redux";
+import { GET_USER_INFO } from "../../redux/actions";
 
 const Account = ({ navigation, route }) => {
+  const { user } = useSelector((state) => state);
+  const dispatch = useDispatch();
   const [img, setImg] = React.useState(
     "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
   );
+
+  const getUserInfo = async () => {
+    const { ok, data } = await getUser();
+    if (!ok) {
+      return;
+    }
+    dispatch({ type: GET_USER_INFO, payload: { data: data.data } });
+  };
+
+  React.useEffect(() => {
+    getUserInfo();
+  }, []);
 
   return (
     <View style={styles.container}>
@@ -19,10 +36,8 @@ const Account = ({ navigation, route }) => {
           />
         </View>
         <View>
-          <Text styles={{ textAlign: "center" }}>Kyle Technologies</Text>
-          <Text styles={{ textAlign: "center" }}>
-            kyletechnologies@gmail.com
-          </Text>
+          <Text styles={{ textAlign: "center" }}>{user?.data?.fullname}</Text>
+          <Text styles={{ textAlign: "center" }}>{user?.data?.email}</Text>
         </View>
       </View>
       <View style={styles.pEdit}>

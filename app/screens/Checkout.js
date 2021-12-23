@@ -28,7 +28,7 @@ const Checkout = ({ navigation }) => {
           </Text>
           <View style={[styles.ln, { height: activeHeight(0) }]} />
         </Pressable>
-        <Pressable style={styles.tab} onPress={() => setActive(1)}>
+        <Pressable style={styles.tab}>
           <Text style={[styles.tabTxt, { color: activeBg(1) }]}>Payment</Text>
           <View style={[styles.ln, { height: activeHeight(1) }]} />
         </Pressable>

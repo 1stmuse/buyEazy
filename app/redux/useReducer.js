@@ -3,6 +3,7 @@ import {
   LOGOUT_ACTION,
   UPLOAD_ACTION,
   SIGNUP_ACTION,
+  GET_USER_INFO,
 } from "./actions";
 
 const initialState = {
@@ -29,6 +30,12 @@ export const userReducer = (state = initialState, action) => {
           image: "",
         },
       });
+
+    case GET_USER_INFO:
+      return {
+        ...state,
+        data: { ...payload.data },
+      };
 
     case LOGIN_ACTION:
       return (state = {

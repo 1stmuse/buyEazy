@@ -8,6 +8,7 @@ import {
   ScrollView,
   TouchableOpacity,
 } from "react-native";
+import { useDispatch } from "react-redux";
 import AppInput from "../components/common/AppInput";
 
 import Screen from "../components/common/Screen";
@@ -15,13 +16,14 @@ import Colors from "../Colors";
 import Category from "../components/Category";
 import ProductCard from "../components/common/ProductCard";
 import Swipers from "../components/homepage/Swiper";
-import { getAllCategory } from "../api/category";
-import { getProducts } from "../api/products";
 
-import { Products, Cats } from "../data";
+import { getProducts, getAllCategory } from "../api/api";
+import { GET_PRODUCTS } from "../redux/actions";
+
 import SearchHeader from "../components/common/SearchHeader";
 
 const HomeScreen = ({ navigation }) => {
+  const dispatch = useDispatch();
   const [cat, setCat] = useState([]);
   const [products, setProducts] = useState([]);
   const getCat = async () => {
@@ -37,6 +39,7 @@ const HomeScreen = ({ navigation }) => {
     // console.log(data.data.slice(0, 2));
     if (ok) {
       setProducts(data.data.slice(0, 10));
+      dispatch({ type: GET_PRODUCTS, payload: { data: data.data } });
     }
   };
 

@@ -7,13 +7,20 @@ import {
   useWindowDimensions,
   Pressable,
 } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 import Colors from "../Colors";
 
 const Category = ({ data, top }) => {
+  const navigation = useNavigation();
   const { width } = useWindowDimensions();
   if (top) {
     return (
-      <Pressable style={[styles.topp]}>
+      <Pressable
+        style={[styles.topp]}
+        onPress={() =>
+          navigation.navigate("category_list", { title: data?.name })
+        }
+      >
         <Text style={{ color: "black" }}>{data.name}</Text>
       </Pressable>
     );
