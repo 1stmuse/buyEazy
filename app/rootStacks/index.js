@@ -9,6 +9,7 @@ import AllProducts from "../screens/AllProducts";
 import Cart from "../screens/Cart";
 import Checkout from "../screens/Checkout";
 import CategoryList from "../screens/CategoryList";
+import AddAddress from "../screens/AddAddress";
 
 const options = {
   headerShown: false,
@@ -56,6 +57,14 @@ const RootStack = () => {
         component={CategoryList}
         options={({ route }) => ({
           headerTitle: route.params?.title,
+        })}
+      />
+      <stack.Screen
+        name="address"
+        component={AddAddress}
+        options={({ route }) => ({
+          headerBackTitleVisible: false,
+          headerTitle: `${route?.params?.type} address`,
         })}
       />
     </stack.Navigator>

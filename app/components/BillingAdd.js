@@ -3,24 +3,23 @@ import {
   Text,
   StyleSheet,
   Pressable,
-  Modal,
   useWindowDimensions,
   TextInput,
 } from "react-native";
 import React, { useState, useEffect } from "react";
 import Colors from "../Colors";
 import AppButton from "../components/common/AppButton";
-import { AntDesign } from "@expo/vector-icons";
-import AppInput from "./common/AppInput";
+import { useNavigation } from "@react-navigation/native";
 import { getAddress } from "../api/api";
 import { useDispatch, useSelector } from "react-redux";
 import { GET_ADDRESS } from "../redux/actions";
 
 const BillingAdd = ({ next }) => {
   const { address } = useSelector((state) => state);
+  const navigation = useNavigation();
+
   const dispatch = useDispatch();
   const { width, height } = useWindowDimensions();
-  const [showForm, setShowForm] = useState(false);
 
   const getAddresses = async () => {
     const { data, ok } = await getAddress();
@@ -34,77 +33,8 @@ const BillingAdd = ({ next }) => {
     getAddresses();
   }, []);
 
-  console.log(address);
-
-  const AddressForm = () => {
-    return (
-      <View
-        style={{
-          minHeight: height * 0.3,
-          // marginHorizontal: width * 0.05,
-          justifyContent: "center",
-          backgroundColor: "white",
-          borderRadius: 15,
-          width: width * 0.9,
-          paddingHorizontal: 10,
-          paddingVertical: 20,
-        }}
-      >
-        <View
-          style={{
-            flexDirection: "row",
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}
-        >
-          <Text style={styles.addL}>Add new delivery method</Text>
-          <Pressable onPress={() => setShowForm(false)}>
-            <AntDesign name="close" color={Colors.primary} size={24} />
-          </Pressable>
-        </View>
-        <View
-          style={{
-            borderWidth: 0.5,
-            borderRadius: 7,
-            marginTop: 30,
-          }}
-        >
-          <TextInput
-            style={{ width: "100%", paddingHorizontal: 20, paddingVertical: 5 }}
-            multiline
-            placeholder="address name"
-          />
-        </View>
-        <View>
-          <AppButton
-            text="ADD"
-            // onClick={() => next(1)}
-            style={styles.btn}
-            textStyle={{ color: "white" }}
-          />
-        </View>
-      </View>
-    );
-  };
-
   return (
     <View style={styles}>
-      <Modal
-        transparent
-        visible={showForm}
-        style={{ flex: 1, backgroundColor: "red" }}
-      >
-        <View
-          style={{
-            flex: 1,
-            alignItems: "center",
-            justifyContent: "center",
-            backgroundColor: "rgba(0,0,0,0.5)",
-          }}
-        >
-          <AddressForm />
-        </View>
-      </Modal>
       <View style={styles.card}>
         <View style={styles.addMain}>
           <Text style={styles.addL}>DELIVERY METHOD</Text>
@@ -123,7 +53,9 @@ const BillingAdd = ({ next }) => {
           </View>
         </View>
         <View style={styles.newAdd}>
-          <Pressable onPress={() => setShowForm(true)}>
+          <Pressable
+            onPress={() => navigation.navigate("address", { type: "Add" })}
+          >
             <Text style={styles.newTxt}>ADD NEW ADDRESS</Text>
           </Pressable>
         </View>

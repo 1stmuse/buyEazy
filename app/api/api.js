@@ -2,13 +2,11 @@ import { api } from ".";
 import storage from "@react-native-async-storage/async-storage";
 
 export const login = async (data) => {
-  const result = await api.post("/users/auth", data);
-  return result;
+  return await api.post("/users/auth", data);
 };
 
 export const register = async (data) => {
-  const result = await api.post("/users", data);
-  return result;
+  return await api.post("/users", data);
 };
 
 export const getUser = async () => {
@@ -16,8 +14,7 @@ export const getUser = async () => {
   api.setHeaders({
     authorization: `bearer ${token}`,
   });
-  const result = await api.get("/users");
-  return result;
+  return await api.get("/users");
 };
 
 export const getAllCategory = async () => {
@@ -33,6 +30,14 @@ export const getAddress = async () => {
   api.setHeaders({
     authorization: `bearer ${token}`,
   });
-  const result = await api.get("/address");
-  return result;
+  return await api.get("/address");
+};
+
+export const addAddress = async (data) => {
+  const token = await storage.getItem("token");
+  api.setHeaders({
+    authorization: `bearer ${token}`,
+  });
+
+  return await api.post("/address", data);
 };
